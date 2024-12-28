@@ -389,7 +389,7 @@ class Linter
             $sPropertyName = trim($this->getContextContent());
 
             // Ignore CSS variables (names starting with --)
-            if (substr($sPropertyName, 0, 2) === '--') {
+            if (str_starts_with($sPropertyName, '--')) {
                 $this->setContext(self::CONTEXT_PROPERTY_CONTENT);
                 return true;
             }

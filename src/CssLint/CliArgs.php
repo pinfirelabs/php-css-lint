@@ -42,13 +42,13 @@ class CliArgs
 
         foreach ($aArguments as $sArgument) {
             // --foo --bar=baz
-            if (substr($sArgument, 0, 2) == '--') {
-                $sEqualPosition = strpos($sArgument, '=');
+            if (str_starts_with((string) $sArgument, '--')) {
+                $sEqualPosition = strpos((string) $sArgument, '=');
 
                 // --bar=baz
                 if ($sEqualPosition !== false) {
-                    $sKey = substr($sArgument, 2, $sEqualPosition - 2);
-                    $sValue = substr($sArgument, $sEqualPosition + 1);
+                    $sKey = substr((string) $sArgument, 2, $sEqualPosition - 2);
+                    $sValue = substr((string) $sArgument, $sEqualPosition + 1);
                     $aParsedArguments[$sKey] = $sValue;
                 }
             }
